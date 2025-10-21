@@ -1,0 +1,377 @@
+body {
+  font-family: "Poppins", sans-serif;
+  background: #f9f9f9;
+  margin: 0;
+  padding: 20px;
+}
+
+.container {
+  max-width: 900px;
+  margin: auto;
+  background: #fff;
+  padding: 25px;
+  border-radius: 16px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.profile {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.profile img {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+}
+
+.profile a {
+  color: #0077b5;
+  text-decoration: none;
+}
+
+.status-boxes {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  margin: 20px 0;
+}
+
+.status {
+  width: 120px;
+  text-align: center;
+  padding: 10px;
+  border-radius: 10px;
+  color: #ffffff;
+  font-weight: 600;
+}
+
+.low {
+  background-color: #bd3039;
+}
+.medium {
+  background-color: #0c2340;
+}
+.high {
+  background-color: #f5b70c;
+}
+.done {
+  background-color: #03a300;
+}
+
+.status span {
+  display: block;
+  font-size: 22px;
+  margin-top: 5px;
+}
+
+.add-task {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.add-task input,
+select,
+button {
+  padding: 8px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
+
+.add-task button {
+  background-color: #0077b5;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+.add-task button:hover {
+  background-color: #005f8e;
+}
+
+.task-lists {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 15px;
+}
+
+.task-column {
+  background: #f4f4f4;
+  border-radius: 10px;
+  padding: 10px;
+}
+
+.task-column ul {
+  list-style: none;
+  padding: 0;
+}
+
+.task-column li {
+  background: white;
+  margin: 5px 0;
+  padding: 8px;
+  border-radius: 6px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.task-actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+}
+
+/* Batasi teks agar tidak menutupi tombol */
+.task-actions span {
+  flex: 1; /* teks menyesuaikan lebar */
+  word-break: break-word; /* jika terlalu panjang, pecah kata */
+  overflow-wrap: anywhere;
+  font-weight: 500;
+  font-size: 14px;
+}
+
+/* Tombol done/delete */
+.task-actions button {
+  flex-shrink: 0; /* tombol tidak ikut mengecil */
+  background: #0077b5;
+  border: none;
+  color: #fff;
+  padding: 6px 8px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+}
+
+.task-actions button:hover {
+  background: #005f8a;
+}
+
+.task-actions button i {
+  font-size: 14px;
+  pointer-events: none;
+}
+
+.task-column li button {
+  border: none;
+  background: #0077b5;
+  color: white;
+  border-radius: 4px;
+  cursor: pointer;
+  padding: 4px 8px;
+}
+
+.task-column li button:hover {
+  background: #005f8e;
+}
+
+.done-time {
+  font-size: 12px;
+  color: gray;
+  text-align: right;
+}
+
+.buttons {
+  text-align: center;
+  margin-top: 20px;
+}
+
+#delete-all {
+  background: red;
+  color: white;
+  padding: 8px 12px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+#delete-all:hover {
+  background: darkred;
+}
+
+/* GRID LAYOUT UNTUK BOX STATUS */
+.task-container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 15px;
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+/* Preloader background tetap */
+#preloader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, #0f0f0f 0%, #052755 100%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  transition: transform 0.8s cubic-bezier(0.65, 0, 0.35, 1), opacity 0.5s ease;
+}
+
+.loader-container {
+  position: relative;
+  width: 140px;
+  height: 140px;
+  text-align: center;
+}
+
+/* ✨ Logo kedap-kedip smooth */
+.preloader-logo {
+  width: 100px;
+  height: 100px;
+  object-fit: contain;
+  animation: blinkSmooth 2s infinite ease-in-out;
+  filter: drop-shadow(0 0 10px rgba(59, 130, 246, 0.6));
+}
+
+/* Animasi kedap-kedip halus */
+@keyframes blinkSmooth {
+  0%,
+  100% {
+    opacity: 0.3;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.05);
+  }
+}
+
+/* Progress bar & teks loading tetap */
+.progress-bar {
+  position: absolute;
+  bottom: -50px;
+  left: -30px;
+  width: 200px;
+  height: 4px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.progress {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(to right, #bc1924, #ffc107);
+  transition: width 0.2s ease;
+}
+
+.loading-text {
+  position: absolute;
+  bottom: -80px;
+  left: 0;
+  right: 0;
+  text-align: center;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.preloader-done {
+  transform: translateY(-100%);
+  opacity: 0;
+}
+
+/* Responsif Tablet (2 kolom × 2 baris) */
+@media (max-width: 768px) {
+  .task-container {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
+
+  .task-column {
+    min-width: auto;
+  }
+}
+
+.done-info {
+  font-size: 13px;
+  color: #0077b5;
+  text-align: left;
+  margin-top: 5px;
+  padding-left: 5px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.done-info i {
+  color: #0077b5;
+  font-size: 13px;
+}
+
+/* Responsif Mobile (2 kolom × 2 baris rapi, padding disesuaikan) */
+@media (max-width: 480px) {
+  .task-container {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    padding: 0 5px;
+  }
+
+  .task-column {
+    padding: 12px;
+  }
+
+  .task-column h2 {
+    font-size: 15px;
+  }
+
+  .task-column p {
+    font-size: 13px;
+  }
+
+  .task-actions span {
+    font-size: 13px;
+  }
+
+  .task-actions button {
+    width: 26px;
+    height: 26px;
+    padding: 0;
+  }
+
+  .done-time {
+    font-size: 12px;
+  }
+}
+
+/* Web Mode (Desktop ≥ 1024px) */
+@media (min-width: 1024px) {
+  .task-container {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+@media (max-width: 600px) {
+  .status-boxes {
+    flex-direction: column;
+    align-items: center;
+  }
+  .add-task {
+    flex-direction: column;
+  }
+}

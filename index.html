@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>To-do App</title>
+    <link rel="stylesheet" href="assets/css/style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+    />
+  </head>
+  <body style="background: #0c2340">
+    <div class="container">
+      <header>
+        <div class="date-time">
+          <h3><span id="date"></span></h3>
+          <p id="clock"></p>
+        </div>
+        <div class="profile">
+          <img src="assets/img/IMG_20210816_195106.jpg" alt="Profile Picture" />
+          <div>
+            <h3>Brian Steven Petrus</h3>
+            <p>Front-End Developer</p>
+            <a
+              href="https://www.linkedin.com/in/brian-steven-petrus"
+              target="_blank"
+              >LinkedIn</a
+            >
+          </div>
+        </div>
+      </header>
+
+      <div class="status-boxes">
+        <div class="status low">Low <span id="low-count">0</span></div>
+        <div class="status medium">Medium <span id="medium-count">0</span></div>
+        <div class="status high">High <span id="high-count">0</span></div>
+        <div class="status done">Done <span id="done-count">0</span></div>
+      </div>
+
+      <div class="add-task">
+        <input type="text" id="task-input" placeholder="Enter a new task..." />
+        <select id="priority">
+          <option value="low">Low</option>
+          <option value="medium">Medium</option>
+          <option value="high">High</option>
+        </select>
+        <button id="add-btn">Add</button>
+      </div>
+
+      <div class="task-lists">
+        <div class="task-column" id="low-tasks">
+          <h3>Low Priority</h3>
+          <ul></ul>
+        </div>
+        <div class="task-column" id="medium-tasks">
+          <h3>Medium Priority</h3>
+          <ul></ul>
+        </div>
+        <div class="task-column" id="high-tasks">
+          <h3>High Priority</h3>
+          <ul></ul>
+        </div>
+        <div class="task-column" id="done-tasks">
+          <h3>Done</h3>
+          <ul></ul>
+        </div>
+      </div>
+
+      <div class="buttons">
+        <button id="delete-all">Delete All</button>
+      </div>
+    </div>
+
+    <!--Preload-->
+
+    <div id="preloader">
+      <div class="loader-container">
+        <img src="assets/img/logo.gif" alt="Logo" class="preloader-logo" />
+        <div class="progress-bar">
+          <div class="progress" id="progress"></div>
+        </div>
+        <div class="loading-text">Loading</div>
+      </div>
+    </div>
+
+    <script src="assets/js/scripts.js"></script>
+  </body>
+</html>
