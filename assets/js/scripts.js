@@ -75,8 +75,6 @@ function updateCounts() {
 function markDone(index) {
   const now = new Date();
   const timeStr = now.toLocaleTimeString("en-US", { hour12: false });
-
-  // simpan kategori asal sebelum diubah jadi "done"
   tasks[index].originalCategory = tasks[index].category;
   tasks[index].category = "done";
   tasks[index].doneTime = timeStr;
